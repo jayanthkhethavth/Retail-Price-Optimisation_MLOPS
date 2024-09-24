@@ -44,8 +44,8 @@ zenml up
 If you are running the run_cid_pipeline.py` script, you will also need to install some integrations using ZenML:
 
 
-zenml integration install mlflow -y
-zenml integration install bentoml
+ zenml integration install mlflow -y
+ zenml integration install bentoml
 
 
 
@@ -53,14 +53,14 @@ zenml integration install bentoml
 The project can only be executed with a ZenML stack that has an MLflow experiment tracker and BentoML model deployer as a component. Configuring a new stack with the two components are as follows:
 
 
-zenml experiment-tracker register mlflow_tracker --flavor=mlflow
-zenml model-deployer register bentoml_deployer --flavor=bentoml
-zenml stack register local_bentoml_stack \
- -a default \
- -o default \
- -d bentoml_deployer \
- -e mlflow_tracker
- --set
+  zenml experiment-tracker register mlflow_tracker --flavor=mlflow
+  zenml model-deployer register bentoml_deployer --flavor=bentoml
+  zenml stack register local_bentoml_stack \
+  -a default \
+  -o default \
+  -d bentoml_deployer \
+  -e mlflow_tracker
+  --set
 
 
 
@@ -69,12 +69,12 @@ zenml stack register local_bentoml_stack \
 Our standard training pipeline consists of several steps:
 
 
-- ingest: Ingests the data from the databas into the ZenML repository.
-- categorical_encoder: Encodes the categorical features of the dataset.
-- feature_engineer: Create new features from the existing features.
-- split: Splits the dataset into train and eval splits.
-- train: Trains the model on the training split.
-- evaluate: Evaluates the model on the eval split.
-- decision:
-- deploy: Deploys the model to a BentoML endpoint.
+ - ingest: Ingests the data from the databas into the ZenML repository.
+ - categorical_encoder: Encodes the categorical features of the dataset.
+ - feature_engineer: Create new features from the existing features.
+ - split: Splits the dataset into train and eval splits.
+ - train: Trains the model on the training split.
+ - evaluate: Evaluates the model on the eval split.
+ - decision:
+ - deploy: Deploys the model to a BentoML endpoint.
 
